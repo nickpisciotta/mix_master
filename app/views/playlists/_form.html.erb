@@ -1,6 +1,14 @@
-<h1> Edit Playlist </h1>
 
 <%= form_for(@playlist) do |f| %>
+  <% if @playlist.errors.any? %>
+    <h2><%= pluralize(@playlist.errors.count, "error") %> prohibited this playlist from being saved:</h2>
+    <ul>
+      <% @playlist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
 
